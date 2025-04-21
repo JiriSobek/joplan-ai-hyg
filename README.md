@@ -1,3 +1,3 @@
-# Joplan AI Assistant
+# Joplan AI Asistent
 
-Webová aplikace pro podporu pečovatelek při tvorbě individuálních plánů.
+Webová aplikace pro individuální plánování.
