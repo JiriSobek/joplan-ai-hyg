@@ -1,3 +1,3 @@
-# Joplan AI Asistent
+# Joplan AI asistent
 
 Webová aplikace pro individuální plánování.
