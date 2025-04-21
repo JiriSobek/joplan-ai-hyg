@@ -23,14 +23,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (action === "comment") {
     messages.push({
       role: "user",
-      content: `Jak tento text hodnotíš? Co je potřeba doplnit nebo vylepšit?`,
+      content: "Jak tento text hodnotíš? Co je potřeba doplnit nebo vylepšit?",
     });
   }
 
   if (action === "improve") {
     messages.push({
       role: "user",
-      content: `Uprav a vylepši formulaci tohoto textu. Zachovej význam.`,
+      content: "Uprav a vylepši formulaci tohoto textu. Zachovej význam.",
     });
   }
 
@@ -39,10 +39,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       temperature: 0.7,
     });
 
-    const result = completion.choices[0].message?.content ?? "";
-    res.status(200).json({ result });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ result: "Došlo k chybě při komunikaci s Azure OpenAI." });
+    res.status(200).json({ result: completion.choices[0].message.content.trim() });
+  } catch (error) {
+    console.error("Chyba API:", error);
+    res.status(500).json({ error: "Chyba při komunikaci s Azure OpenAI." });
   }
 }
